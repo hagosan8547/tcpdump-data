@@ -1,5 +1,11 @@
 # v0.0.0 "Using libpcap in C"
 
+ifeq ($(OS),Windows_NT)
+PCAP_LIB = -lwpcap
+else
+PCAP_LIB = -lpcap
+endif
+
 SUFFIX   = .c
 
 SRCDIR   = ./src
@@ -7,7 +13,7 @@ INCLUDE  = ./include
 EXEDIR   = ./bin
 
 COMPILER = gcc
-CLIB     = -lpcap
+CLIB     = $(PCAP_LIB)
 
 SOURCES  = $(wildcard $(SRCDIR)/*$(SUFFIX))
 OBJECTS  = $(notdir $(SOURCES:$(SUFFIX)=.o))
@@ -17,6 +23,10 @@ CFLAGS  += -Wall -O2
 
 PROGRAM  = tcpdump-data
 
+ifeq ($(OS),Windows_NT)
+CLIB +=  -lwsock32 -lws2_32
+endif
+
 .PHONY: all
 all: obj-make exe-make
 	@rm $(OBJECTS)
@@ -24,7 +34,7 @@ all: obj-make exe-make
 .PHONY: obj-make
 obj-make: $(OBJECTS)
 $(OBJECTS): $(SOURCES)
-	$(COMPILER) -I$(INCLUDE) $(CFLAGS) -c $+
+	$(COMPILER) -I$(INCLUDE) $(CFLAGS) -c $+ $(CLIB)
 
 .PHONY: exe-make
 exe-make: $(PROGRAM)

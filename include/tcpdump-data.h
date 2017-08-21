@@ -6,7 +6,7 @@
 
 #ifdef __WIN32__
 // Windows
-#include "byteorder.h"
+#include <Winsock2.h>
 
 struct ether_header {
   u_char ether_dhost[6];
@@ -29,6 +29,12 @@ typedef struct ether_header eth_h_t;
 
 // Add to handlr proxy function.
 void (*proxy_handler)(
+  u_char *args,
+  const struct pcap_pkthdr *header,
+  const u_char *packet
+);
+
+extern void data_out_handler(
   u_char *args,
   const struct pcap_pkthdr *header,
   const u_char *packet

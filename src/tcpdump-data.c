@@ -32,6 +32,7 @@ int main(int argc, char const *argv[]) {
     break;
   }
 
+  fprintf(stderr, "device:%s\n", device);
   handle = pcap_open_live(device, snapshot_length, 0, 10000, error_buffer);
   pcap_loop(handle, total_packet_count, proxy_handler, my_arguments);
 
