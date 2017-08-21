@@ -22,6 +22,15 @@ int main(int argc, char const *argv[]) {
   int total_packet_count = -1;
   u_char *my_arguments = NULL;
 
+  switch (DEBUG_VALUE) {
+    case DEBUG_MY_PACKET_HANDLER:
+
+    break;
+    case DEBUG_DATA_OUT_HANDLER:
+    
+    break;
+  }
+
   handle = pcap_open_live(device, snapshot_length, 0, 10000, error_buffer);
   pcap_loop(handle, total_packet_count, my_packet_handler, my_arguments);
 

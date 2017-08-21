@@ -27,7 +27,12 @@ struct ether_header {
 
 typedef struct ether_header eth_h_t;
 
-//TODO: Add to handlr proxy function.
+// Add to handlr proxy function.
+void (*proxy_handler)(
+  u_char *args,
+  const struct pcap_pkthdr *header,
+  const u_char *packet
+);
 
 extern void my_packet_handler(
   u_char *args,
