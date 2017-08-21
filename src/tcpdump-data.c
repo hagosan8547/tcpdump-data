@@ -1,5 +1,17 @@
 #include "tcpdump-data.h"
 
+#define DEBUG_MY_PACKET_HANDLER 0
+#define DEBUG_DATA_OUT_HANDLER 1
+
+#define DEBUG_1
+//#define DEBUG_2
+
+#ifdef DEBUG_1
+#define DEBUG_VALUE DEBUG_MY_PACKET_HANDLER
+#elif DEBUG_2
+#define DEBUG_VALUE DEBUG_DATA_OUT_HANDLER
+#endif
+
 int main(int argc, char const *argv[]) {
   char *device = "any";
   char error_buffer[PCAP_ERRBUF_SIZE];
