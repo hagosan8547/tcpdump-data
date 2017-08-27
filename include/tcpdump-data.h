@@ -3,8 +3,9 @@
 
 #include <pcap.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-#ifdef __WIN32__
+#ifdef _WIN32
 // Windows
 #include <Winsock2.h>
 
@@ -44,6 +45,10 @@ extern void my_packet_handler(
   u_char *args,
   const struct pcap_pkthdr *header,
   const u_char *packet
+);
+
+extern char *choice_device(
+  int device_num
 );
 
 #endif
