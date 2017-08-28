@@ -1,6 +1,6 @@
 #include "tcpdump-data.h"
 
-//#define DEBUG
+#define DEBUG
 
 char *choice_device(
   int device_num
@@ -26,6 +26,7 @@ char *choice_device(
     fprintf(stderr, "device_select\n");
     #endif
 
+    /*
     for (d = alldevs; d; d=d->next) {
       fprintf(stderr,"%d %s", ++i, d->name);
       if (d->description) {
@@ -34,6 +35,8 @@ char *choice_device(
         fprintf(stderr," (No description available)\n");
       }
     }
+    */
+    i=print_device(alldevs);
 
     if(i==0)
     {
@@ -48,7 +51,7 @@ char *choice_device(
   #ifdef DEBUG
   fprintf(stderr,"device_choice\n");
   #endif
-  
+
   i=0;
   for (d = alldevs; i<(select-1); d=d->next){
     #ifdef DEBUG

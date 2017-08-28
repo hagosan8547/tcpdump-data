@@ -4,9 +4,10 @@
 #include <pcap.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <getopt.h>
 
 #ifdef _WIN32
-// Windows
+/* Windows */
 #include <Winsock2.h>
 
 struct ether_header {
@@ -16,15 +17,15 @@ struct ether_header {
 };
 
 #else
-// Linux
+/* Linux */
 #include <netinet/in.h>
 #include <netinet/if_ether.h>
 #endif
 
 
-#define ETHERTYPE_PUP 0x0200 // PUP protocol
-#define ETHERTYPE_IP  0x0800 // IP protocol
-#define ETHERTYPE_ARP 0x0806 // Addr, resolution protocol
+#define ETHERTYPE_PUP 0x0200 /* PUP protocol */
+#define ETHERTYPE_IP  0x0800 /* IP protocol */
+#define ETHERTYPE_ARP 0x0806 /* Addr, resolution protocol */
 
 typedef struct ether_header eth_h_t;
 
@@ -49,6 +50,10 @@ extern void my_packet_handler(
 
 extern char *choice_device(
   int device_num
+);
+
+extern int print_device(
+  pcap_if_t *alldevs
 );
 
 #endif
