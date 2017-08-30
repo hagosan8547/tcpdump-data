@@ -11,8 +11,8 @@ libpcap を用いたテスト用データダンププログラム。
 #### -interface or -i mode
 
 ```bash:
-$ tcpdump-data -interface 0
-$ tcpdump-data -i 0
+$ tcpdump-data -interface=0
+$ tcpdump-data -i=0
 ```
 
 このモードではインターネットカードを指定するモードに入る。
@@ -20,8 +20,8 @@ $ tcpdump-data -i 0
 また以下のパターンではそのままデバイスの指定を行うこともできる。(1番からN番までがわかっていることを前提とする機能。)
 
 ```bash:
-$ tcpdump-data -i 1
-$ tcpdump-data -interface 1
+$ tcpdump-data -i=1
+$ tcpdump-data -interface=1
 ```
 
 ### フィルター文字列
@@ -30,7 +30,7 @@ $ tcpdump-data -interface 1
 が、指定には""で囲んで指定する必要がある。
 
 ```bash:
-$ tcpdump-data -F "host"
-$ tcpdump-data -Filter "src host [IP Address]"
-$ tcpdump-data -Filter "dst host [IP Address]"
+$ tcpdump-data -F="host"
+$ tcpdump-data -Filter="src host [IP Address]"
+$ tcpdump-data -Filter="dst host [IP Address]"
 ```
