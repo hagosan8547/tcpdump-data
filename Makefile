@@ -10,7 +10,6 @@ SUFFIX   = .c
 
 SRCDIR   = ./src
 INCLUDE  = ./include
-EXEDIR   = ./bin
 
 COMPILER = gcc
 CLIB     = $(PCAP_LIB)
@@ -39,13 +38,17 @@ $(OBJECTS): $(SOURCES)
 .PHONY: exe-make
 exe-make: $(PROGRAM)
 $(PROGRAM): $(OBJECTS)
-	$(COMPILER) -I$(INCLUDE) $(CFLAGS) -o $(EXEDIR)/$@ $^ $(CLIB)
+	$(COMPILER) -I$(INCLUDE) $(CFLAGS) -o $@ $^ $(CLIB)
 
 .PHONY: debug
 debug:
 	@echo "$(TARGETS)"
 	@echo "$(OBJECTS)"
 	@echo "$(SOURCES)"
+
+.PHONY: find-dir
+find-dir:
+	@echo "Non\n"
 
 .PHONY: clean
 clean:

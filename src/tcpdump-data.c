@@ -80,20 +80,9 @@ int main(int argc, char * const argv[]) {
     #endif
     switch (opt) {
       case 'F':
-      filter=optarg;
+      filter=argv[longindex];
       break;
 
-      /*
-       * -i interface
-       * --interface=interface
-       *     Listen on interface.
-       *     If unspecified,
-       *     tcpdump searches the system interface list
-       *     for the lowest numbered,
-       *     configured up interface (excluding loopback),
-       *     which may turn out to be, for example,
-       *     ``eth0''.
-       */
       case 'i':
       /* number */
       device=choice_device(atoi(argv[longindex]));

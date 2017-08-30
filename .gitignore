@@ -1,2 +1,7 @@
-# old folder removed
+# old folder removed.
 old/
+# bin folder needless.
+bin/
+# exec file removed.
+tcpdump-data.exe
+tcpdump-data
