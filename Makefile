@@ -46,10 +46,6 @@ debug:
 	@echo "$(OBJECTS)"
 	@echo "$(SOURCES)"
 
-.PHONY: find-dir
-find-dir:
-	@echo "Non\n"
-
 .PHONY: clean
 clean:
 	$(RM) $(OBJECTS) $(addprefix $(EXEDIR)/,$(TARGETS))
